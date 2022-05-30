@@ -31,7 +31,7 @@ resource "azurerm_network_interface" "this" {
   ip_configuration {
     name                          = "primary"
     subnet_id                     = var.interfaces[count.index].subnet_id
-    private_ip_address_allocation = try(var.interfaces[count.index].private_ip_address, null) != null ? "static" : "dynamic"
+    private_ip_address_allocation = try(var.interfaces[count.index].private_ip_address, null) != null ? "Static" : "Dynamic"
     private_ip_address            = try(var.interfaces[count.index].private_ip_address, null)
     public_ip_address_id          = try(azurerm_public_ip.this[count.index].id, var.interfaces[count.index].public_ip_address_id, null)
   }
